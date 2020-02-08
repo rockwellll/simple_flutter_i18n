@@ -1,9 +1,9 @@
 name: simple_flutter_i18n
-description: A new Flutter project.
+description: a package that makes it easy to have multiple langauges in your application
 
 author: A7madXatab <dev.ahmad.khattab@gmai.com>
 
-homepage: https://github.com/A7madXatab/-simple_flutter_i18n
+homepage: https://github.com/A7madXatab/simple_flutter_i18n
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
