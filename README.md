@@ -1,4 +1,5 @@
 # simple_flutter_i18n
+flutter internationalization made simple and easy to use.
 
 ## Motive
 while i was searching for the packages to help me with multi-langauge stuff , setting them up was hard, working with them was even harder, so i created this simple package to help me
@@ -48,4 +49,8 @@ Directionality(
 
 ## Methods: 
 
-1- changeLangaugeTo(newLanguage) // Map<String, dynamic >
+1- ```
+
+setLocale(newLanguage) // Map<String, dynamic > newLangauge
+// throws error if the langauge dosent have a isRtl key
+```
