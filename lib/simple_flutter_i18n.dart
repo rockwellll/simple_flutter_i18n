@@ -32,6 +32,7 @@ class I18n with ChangeNotifier, ErrorChecker {
 
   /// updates the lanauge to [locale] object.
   /// [locale] Map must contain an 'isRtl' key as the package is looking for that key
+  /// [setLocale] also calls [I18n().persist] to persist the language
   void setLocale(Map<String, dynamic> locale) {
     keyExistsOrError(locale, 'isRtl');
 
@@ -43,17 +44,20 @@ class I18n with ChangeNotifier, ErrorChecker {
 
   /// loads the language from the storage , and intializes it
   /// [fallback] will be used in case no language was found
-  void load({@required Map<String, dynamic> fallback}) async {
+  Future<bool> load({@required Map<String, dynamic> fallback}) async {
     final loader = new StorageLoader();
 
     final encodedLanguage = await loader.load('language');
 
-    if(encodedLanguage != null) {
-      final language = json.decode(encodedLanguage);
-      this.setLocale(language);
-    }
+    this.setLocale(
+      encodedLanguage == null
+          ? fallback
+          : json.decode(
+              encodedLanguage,
+            ),
+    );
 
-    this.setLocale(fallback);
+    return this.persist();
   }
 
   ///persists the current language to the storage

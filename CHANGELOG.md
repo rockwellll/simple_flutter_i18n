@@ -18,3 +18,7 @@
 ## 1.1.0+2
 
 - fixed a bug in the load method 
+
+## 1.1.0+3
+
+- various bug fixes
