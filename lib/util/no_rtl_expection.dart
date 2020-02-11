@@ -1,10 +1,9 @@
-
 class NoRtlExeption implements Exception {
   final String message;
 
   NoRtlExeption(this.message);
 
-   @override
+  @override
   String toString() {
     return this.message;
   }
