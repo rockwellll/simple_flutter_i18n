@@ -11,3 +11,6 @@
 - added persist method to the package to persist the current language
 
 - added load method to load the data from storage, using shared_preferences
+
+## 1.1.0+1
+- updated readme for being more informative

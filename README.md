@@ -46,6 +46,7 @@ Directionality(
 );
 ```
 
+## Methods
 
 Method        | Description
 ------------- | -------------
