@@ -47,10 +47,8 @@ Directionality(
 ```
 
 
-## Methods: 
-
-1- ```
-
-setLocale(newLanguage) // Map<String, dynamic > newLangauge
-// throws error if the langauge dosent have a isRtl key
-```
+## Method  | Description
+------------- | -------------
+setLocale | sets the locale for the app and notifies listeners   
+load | loads the persisted language from storage and sets it
+persist | persists the current language to the storage
