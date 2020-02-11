@@ -47,7 +47,7 @@ Directionality(
 ```
 
 
-## Method     | Description
+Method        | Description
 ------------- | -------------
 setLocale     | sets the locale for the app and notifies listeners   
 load          | loads the persisted language from storage and sets it
