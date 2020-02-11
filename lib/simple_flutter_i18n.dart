@@ -42,13 +42,18 @@ class I18n with ChangeNotifier, ErrorChecker {
   }
 
   /// loads the language from the storage , and intializes it
-  void load() async {
+  /// [fallback] will be used in case no language was found
+  void load({@required Map<String, dynamic> fallback}) async {
     final loader = new StorageLoader();
 
     final encodedLanguage = await loader.load('language');
-    final language = json.decode(encodedLanguage);
 
-    this.setLocale(language);
+    if(encodedLanguage != null) {
+      final language = json.decode(encodedLanguage);
+      this.setLocale(language);
+    }
+
+    this.setLocale(fallback);
   }
 
   ///persists the current language to the storage
