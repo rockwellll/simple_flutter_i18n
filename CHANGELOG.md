@@ -14,3 +14,7 @@
 
 ## 1.1.0+1
 - updated readme for being more informative
+
+## 1.1.0+2
+
+- fixed a bug in the load method 
