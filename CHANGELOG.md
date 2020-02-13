@@ -22,3 +22,10 @@
 ## 1.1.0+3
 
 - various bug fixes
+
+
+## 1.1.0+4
+
+- removed provider dependancy and updated readme.
+
+## 1.1.0+5
