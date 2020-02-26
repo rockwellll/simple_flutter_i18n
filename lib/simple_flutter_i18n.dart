@@ -11,15 +11,6 @@ class I18n with ChangeNotifier, ErrorChecker {
   Map<String, dynamic> _currentLang;
   bool _isRtl = true;
 
-  /// creates an [I18n] instance ;
-  /// the [langauge] map should contain 'isRtl' key as the package is looking for that key
-  I18n(Map<String, dynamic> language) {
-    keyExistsOrError(language, 'isRtl');
-
-    this._currentLang = language;
-    this._isRtl = language['isRtl'];
-  }
-
   /// [lang] returns a copy of the current langauge
   Map<String, dynamic> get lang {
     return Map.from(_currentLang);
@@ -45,6 +36,8 @@ class I18n with ChangeNotifier, ErrorChecker {
   /// loads the language from the storage , and intializes it
   /// [fallback] will be used in case no language was found
   Future<bool> load({@required Map<String, dynamic> fallback}) async {
+    keyExistsOrError(fallback, 'isRtl');
+
     final loader = new StorageLoader();
 
     final encodedLanguage = await loader.load('language');
