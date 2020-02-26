@@ -6,10 +6,7 @@ import './screens/homeScreen.dart';
 
 void main() => runApp(MyApp());
 
-Map <String, dynamic> en = {
-  'isRtl': false,
-  'welcome': "Welcome"
-};
+Map<String, dynamic> en = {'isRtl': false, 'welcome': "Welcome"};
 
 class MyApp extends StatelessWidget {
   Widget _builder(context, child) {
@@ -24,9 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value:I18n(en))
-      ],
+      providers: [ChangeNotifierProvider.value(value: I18n())],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(),
