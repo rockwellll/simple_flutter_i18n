@@ -29,3 +29,7 @@
 - removed provider dependancy and updated readme.
 
 ## 1.1.0+5
+
+## 1.1.1+0
+- removed the constructor
+- the packages gets initialized through load method
