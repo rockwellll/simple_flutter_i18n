@@ -8,7 +8,7 @@ import './classes/storage_persister.dart';
 
 class I18n with ChangeNotifier, ErrorChecker {
   /// the current langauge
-  Map<String, dynamic> _currentLang;
+  Map<String, dynamic> _currentLang = {};
   bool _isRtl = true;
 
   /// [lang] returns a copy of the current langauge

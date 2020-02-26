@@ -33,3 +33,6 @@
 ## 1.1.1+0
 - removed the constructor
 - the packages gets initialized through load method
+
+## 1.1.1+1-hotfix
+- bug fixes
