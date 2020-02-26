@@ -36,3 +36,6 @@
 
 ## 1.1.1+1-hotfix
 - bug fixes
+
+## 1.1.1+2-hotfix
+- bug fixes

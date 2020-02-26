@@ -51,7 +51,7 @@ the best location to do so is the **initState** of your first screen
 
 MultiProvider(
   providers : [  // other providers of your application
-        ChangeNotifierProvider.value(value: I18n())
+        ChangeNotifierProvider.value(value: I18n(en)) // en is your initial language
       ],
   child : MaterialApp(
     home: HomeScreen()

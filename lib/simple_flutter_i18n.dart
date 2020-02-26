@@ -11,6 +11,8 @@ class I18n with ChangeNotifier, ErrorChecker {
   Map<String, dynamic> _currentLang = {};
   bool _isRtl = true;
 
+  I18n(this._currentLang);
+
   /// [lang] returns a copy of the current langauge
   Map<String, dynamic> get lang {
     return Map.from(_currentLang);
