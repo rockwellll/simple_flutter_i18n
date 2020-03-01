@@ -1,6 +1,9 @@
 # simple_flutter_i18n
 flutter internationalization made simple and easy to use.
 
+# package inspiration
+i got inspired to design the apis of this package by using the amazing package for [svelte](https://svelte.dev/) [svelte-i18n](https://github.com/kaisermann/svelte-i18n)
+
 ## Motive
 while i was searching for the packages to help me with multi-langauge stuff , setting them up was hard, working with them was even harder, so i created this simple package to help me
 i hope it helps you to.
@@ -20,13 +23,26 @@ isRtl         | gets the rtl of the current langauge | **boll**
 
 the example directory show how to set up the class to work in your project
 
+1- Register your langauges thorugh the regisery class of the package;
+```dart
+import "package:simple_flutter_i18n/regisry.dart";
 
-1- import it
+// before your application langauges, register your langauges
+
+  I18nRegistry.register('en', en);
+  I18nRegistry.register('ku', ku);
+  I18nRegistry.register('ar', ar);
+
+  I18nRegistry.setInitialLanguage(en); // your initial language that will be used by the I18n provider
+```
+
+#### then 
 
 ```dart
 import "package:simple_flutter_i18n/simple_flutter_i18n.dart";
 ```
 ***
+
 
 2- proivde it in the list of providers in your application
 
@@ -51,7 +67,9 @@ the best location to do so is the **initState** of your first screen
 
 MultiProvider(
   providers : [  // other providers of your application
-        ChangeNotifierProvider.value(value: I18n(en)) // en is your initial language
+        ChangeNotifierProvider( 
+          create: (_) => I18n()
+        ) // en is your initial language
       ],
   child : MaterialApp(
     home: HomeScreen()
@@ -59,17 +77,17 @@ MultiProvider(
   ),
 );
 
-***
-
 // home_screen.dart
 
 @override
 void initState() {
   super.initState();
   
-  Provider.of<I18n>(context, listen: false).load(fallback: en); // en is your initial language
+  Provider.of<I18n>(context, listen: false).load(fallback: en); // en is your initial/fallback language in case no langauge was found in the shared_preference registry
 }
 ```
+
+***
 
 if there exists a current langauge in the storgae, the package will use that, else it will use the fallback parameter and will call  **I18n.persist** to persist the language.
 
@@ -111,8 +129,20 @@ return MaterialApp(
 
 ## Methods
 
+### I18n
 Method        | Description
 ------------- | -------------
 setLocale     | sets the locale for the app and notifies listeners   
 load          | loads the persisted language from storage and sets it
 persist       | persists the current language to the storage
+
+***
+
+### Registry
+
+Method               | Description
+-------------------- | --------------
+setInitialLanguage   | sets the initial language of your application
+register             | registers the langauge key-value pair
+initialLanguage      | a getter that will get the initialLanguage of the Regisry class, used by I18n provider class
+isEmpty              | checks if the Regisry is empty or not
