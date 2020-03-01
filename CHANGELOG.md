@@ -39,3 +39,9 @@
 
 ## 1.1.1+2-hotfix
 - bug fixes
+
+## 1.2.0
+
+- various bug fixes;
+- improved the Readme
+- overall re-structuring of how the package is utilized
