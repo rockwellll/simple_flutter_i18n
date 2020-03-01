@@ -5,13 +5,17 @@ import 'package:flutter/material.dart';
 import './mixins/error_checker.dart';
 import './classes/storage_loader.dart';
 import './classes/storage_persister.dart';
+import './registry.dart';
 
 class I18n with ChangeNotifier, ErrorChecker {
   /// the current langauge
   Map<String, dynamic> _currentLang = {};
   bool _isRtl = true;
 
-  I18n(this._currentLang);
+  I18n() {
+    this._currentLang = I18nRegistry.initialLanguage;
+    this._isRtl = I18nRegistry.initialLanguage['isRtl'];
+  }
 
   /// [lang] returns a copy of the current langauge
   Map<String, dynamic> get lang {
@@ -23,14 +27,24 @@ class I18n with ChangeNotifier, ErrorChecker {
     return _isRtl;
   }
 
-  /// updates the lanauge to [locale] object.
-  /// [locale] Map must contain an 'isRtl' key as the package is looking for that key
-  /// [setLocale] also calls [I18n().persist] to persist the language
-  void setLocale(Map<String, dynamic> locale) {
-    keyExistsOrError(locale, 'isRtl');
+  /// updates the lanauge to [locale] String.
+  /// [locale] must be a string that is registerd throgh [Registry.register] method
+  /// the method will perform a call to [I18n.persist] to persist the langauge
+  Future<bool> setLocale(String key) {
+    keyExistsOrError(I18nRegistry.langs[key], 'isRtl');
 
-    _currentLang = locale;
-    _isRtl = locale['isRtl'];
+    _currentLang = I18nRegistry.langs[key];
+    _isRtl = I18nRegistry.langs[key]['isRtl'];
+
+    notifyListeners();
+
+    return this.persist();
+  }
+
+  /// called internally when loading the langauge from storage
+  void _setLocaleFromStorage(Map<String, dynamic> values) {
+    _currentLang = values;
+    _isRtl = values['isRtl'];
 
     notifyListeners();
   }
@@ -44,7 +58,7 @@ class I18n with ChangeNotifier, ErrorChecker {
 
     final encodedLanguage = await loader.load('language');
 
-    this.setLocale(
+    this._setLocaleFromStorage(
       encodedLanguage == null
           ? fallback
           : json.decode(
