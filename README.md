@@ -25,15 +25,19 @@ the example directory show how to set up the class to work in your project
 
 1- Register your langauges thorugh the regisery class of the package;
 ```dart
-import "package:simple_flutter_i18n/regisry.dart";
+import "package:simple_flutter_i18n/registry.dart";
 
 // before your application langauges, register your langauges
 
-  I18nRegistry.register('en', en);
-  I18nRegistry.register('ku', ku);
-  I18nRegistry.register('ar', ar);
+  I18nRegistry.register('en', en) // english;
+  I18nRegistry.register('ku', ku) // kurdish;
+  I18nRegistry.register('ar', ar) // arabic;
+```
 
-  I18nRegistry.setInitialLanguage(en); // your initial language that will be used by the I18n provider
+by default, the first time the register function is called, it will use that langauge as the initial lanuage of your application. if you explicitly want to set an intiail language, you can call the setInitialLanaugage method;
+
+```dart
+  I18nRegistry.setInitialLanguage(ar); // arabic is your initial language
 ```
 
 #### then 
@@ -91,6 +95,9 @@ void initState() {
 
 if there exists a current langauge in the storgae, the package will use that, else it will use the fallback parameter and will call  **I18n.persist** to persist the language.
 
+# Optional step
+#### if you want to listen to langauge changes do this, else you can omit this step
+
 3 - anywhere you need to change the direction of a Widget, wrap it in a [Directionality](https://api.flutter.dev/flutter/widgets/Directionality-class.html) widget
 
 ```dart
@@ -122,7 +129,7 @@ return MaterialApp(
     }
   )
 ```
-# this way all of your application will listen to language change and flip on langauge change
+##### this way all of your application will listen to language change and flip on langauge change
 
 ***
 

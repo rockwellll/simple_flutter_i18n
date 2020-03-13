@@ -45,3 +45,8 @@
 - various bug fixes;
 - improved the Readme
 - overall re-structuring of how the package is utilized
+
+## 1.2.1
+
+- updated readme
+- changed the behaviour of the registry class
