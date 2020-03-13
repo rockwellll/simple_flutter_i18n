@@ -5,6 +5,7 @@ class I18nRegistry {
   /// langauges are added to the regisry using the
   /// [I18nRegistry.register]
   static Map<String, Map<String, dynamic>> langs = {};
+  static bool _isFirstCallToRegister = false;
 
   /// the initial language of the application
   static Map<String, dynamic> _initialLanguage = {};
@@ -17,6 +18,12 @@ class I18nRegistry {
   /// register a langauge to the registry
   /// expects a key-value pair to be received
   static void register(String key, Map<String, dynamic> language) {
+    if (!_isFirstCallToRegister) {
+      _isFirstCallToRegister = true;
+
+      setInitialLanguage(language);
+    }
+
     langs[key] = language;
   }
 
