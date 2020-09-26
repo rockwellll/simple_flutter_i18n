@@ -15,7 +15,7 @@ this class is to be used with the [provider](https://pub.dev/packages/provider) 
  Properties   | Description                          | Data type
 ------------- | ------------------------------------ | ------------
 lang          | the current language,                | **Map<String, dymanic>**
-isRtl         | gets the rtl of the current langauge | **boll**
+isRtl         | gets the rtl of the current langauge | **bool**
 
 
 

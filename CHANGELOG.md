@@ -50,3 +50,6 @@
 
 - updated readme
 - changed the behaviour of the registry class
+
+## 1.2.2
+- updating flutter and other dependancies
