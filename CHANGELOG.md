@@ -53,3 +53,6 @@
 
 ## 1.2.2
 - updating flutter and other dependancies
+
+## 1.2.3
+- updating flutter and other dependancies
