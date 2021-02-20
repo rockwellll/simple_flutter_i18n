@@ -37,6 +37,7 @@
 ## 1.1.1+1-hotfix
 - bug fixes
 
+
 ## 1.1.1+2-hotfix
 - bug fixes
 
@@ -55,4 +56,7 @@
 - updating flutter and other dependancies
 
 ## 1.2.3
+- updating flutter and other dependancies
+
+## 1.2.3+1
 - updating flutter and other dependancies
